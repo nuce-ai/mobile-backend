@@ -8,7 +8,7 @@ import subprocess
 
 
 
-ALLOWED_EXTENSIONS = set(['png','jpg','jgeg','gif','pdf'])
+ALLOWED_EXTENSIONS = set(['png','jpg','jpeg','gif','pdf'])
 
 def allowed_file(filename):
     return '.' in filename and \

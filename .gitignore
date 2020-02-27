@@ -1,0 +1,6 @@
+venv
+object_detection.egg-info
+dist
+build
+.vscode/settings.json
+

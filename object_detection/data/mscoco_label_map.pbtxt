@@ -1,132 +1,132 @@
 item {
   name: "/m/01g317"
   id: 1
-  display_name: "person"
+  display_name: "Person"
 }
 item {
   name: "/m/0199g"
   id: 2
-  display_name: "bicycle"
+  display_name: "Bicycle"
 }
 item {
   name: "/m/0k4j"
   id: 3
-  display_name: "car"
+  display_name: "Car"
 }
 item {
   name: "/m/04_sv"
   id: 4
-  display_name: "motorcycle"
+  display_name: "Motorcycle"
 }
 item {
   name: "/m/05czz6l"
   id: 5
-  display_name: "airplane"
+  display_name: "Airplane"
 }
 item {
   name: "/m/01bjv"
   id: 6
-  display_name: "bus"
+  display_name: "Bus"
 }
 item {
   name: "/m/07jdr"
   id: 7
-  display_name: "train"
+  display_name: "Train"
 }
 item {
   name: "/m/07r04"
   id: 8
-  display_name: "truck"
+  display_name: "Truck"
 }
 item {
   name: "/m/019jd"
   id: 9
-  display_name: "boat"
+  display_name: "Boat"
 }
 item {
   name: "/m/015qff"
   id: 10
-  display_name: "traffic light"
+  display_name: "Traffic Light"
 }
 item {
   name: "/m/01pns0"
   id: 11
-  display_name: "fire hydrant"
+  display_name: "Fire Hydrant"
 }
 item {
   name: "/m/02pv19"
   id: 13
-  display_name: "stop sign"
+  display_name: "Stop Sign"
 }
 item {
   name: "/m/015qbp"
   id: 14
-  display_name: "parking meter"
+  display_name: "Parking Meter"
 }
 item {
   name: "/m/0cvnqh"
   id: 15
-  display_name: "bench"
+  display_name: "Bench"
 }
 item {
   name: "/m/015p6"
   id: 16
-  display_name: "bird"
+  display_name: "Bird"
 }
 item {
   name: "/m/01yrx"
   id: 17
-  display_name: "cat"
+  display_name: "Cat"
 }
 item {
   name: "/m/0bt9lr"
   id: 18
-  display_name: "dog"
+  display_name: "Dog"
 }
 item {
   name: "/m/03k3r"
   id: 19
-  display_name: "horse"
+  display_name: "Horse"
 }
 item {
   name: "/m/07bgp"
   id: 20
-  display_name: "sheep"
+  display_name: "Sheep"
 }
 item {
   name: "/m/01xq0k1"
   id: 21
-  display_name: "cow"
+  display_name: "Cow"
 }
 item {
   name: "/m/0bwd_0j"
   id: 22
-  display_name: "elephant"
+  display_name: "Elephant"
 }
 item {
   name: "/m/01dws"
   id: 23
-  display_name: "bear"
+  display_name: "Bear"
 }
 item {
   name: "/m/0898b"
   id: 24
-  display_name: "zebra"
+  display_name: "Zebra"
 }
 item {
   name: "/m/03bk1"
   id: 25
-  display_name: "giraffe"
+  display_name: "Giraffe"
 }
 item {
   name: "/m/01940j"
   id: 27
-  display_name: "backpack"
+  display_name: "Backpack"
 }
 item {
   name: "/m/0hnnb"
   id: 28
-  display_name: "umbrella"
+  display_name: "Umbrella"
 }
 item {
   name: "/m/080hkjn"
@@ -386,7 +386,7 @@ item {
 item {
   name: "/m/0kmg4"
   id: 88
-  display_name: "teddy bear"
+  display_name: "Teddy Bear"
 }
 item {
   name: "/m/03wvsk"
