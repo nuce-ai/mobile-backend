@@ -9,5 +9,5 @@ from controllers.uploadController import *
 def initialize_routes(api):
 #   --------- HomeController --------
 
-  api.add_resource(UploadImageController,'/api/upload')
+  api.add_resource(UploadImageController,'/api/analysis/image')
 
