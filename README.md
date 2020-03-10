@@ -9,6 +9,12 @@ Installing 🎯
     python setup.py install
     pip install -r requirements.txt
 ```
+
+Running  
+-------
+```text
+    python server.py <host> <port>
+```
 Technical 📱
 ------------
 * Flask

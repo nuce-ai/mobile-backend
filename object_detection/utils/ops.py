@@ -1,3 +1,4 @@
+"""A module for helper tensorflow ops."""
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -5,13 +6,39 @@ from __future__ import print_function
 import collections
 import math
 import six
+
 from six.moves import range
+from six.moves import zip
 import tensorflow as tf
+
+
+
 
 
 def reframe_box_masks_to_image_masks(box_masks, boxes, image_height,
                                      image_width):
+  """Transforms the box masks back to full image masks.
+
+  Embeds masks in bounding boxes of larger masks whose shapes correspond to
+  image shape.
+
+  Args:
+    box_masks: A tf.float32 tensor of size [num_masks, mask_height, mask_width].
+    boxes: A tf.float32 tensor of size [num_masks, 4] containing the box
+           corners. Row i contains [ymin, xmin, ymax, xmax] of the box
+           corresponding to mask i. Note that the box corners are in
+           normalized coordinates.
+    image_height: Image height. The output mask will have the same height as
+                  the image height.
+    image_width: Image width. The output mask will have the same width as the
+                 image width.
+
+  Returns:
+    A tf.float32 tensor of size [num_masks, image_height, image_width].
+  """
+  # TODO(rathodv): Make this a public function.
   def reframe_box_masks_to_image_masks_default():
+    """The default function when there are more than 0 box masks."""
     def transform_boxes_relative_to_boxes(boxes, reference_boxes):
       boxes = tf.reshape(boxes, [-1, 2, 2])
       min_corner = tf.expand_dims(reference_boxes[:, 0:2], 1)
@@ -35,5 +62,3 @@ def reframe_box_masks_to_image_masks(box_masks, boxes, image_height,
       reframe_box_masks_to_image_masks_default,
       lambda: tf.zeros([0, image_height, image_width, 1], dtype=tf.float32))
   return tf.squeeze(image_masks, axis=3)
-
-

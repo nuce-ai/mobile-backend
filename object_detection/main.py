@@ -1,10 +1,8 @@
 import numpy as np
 import sys
 import tensorflow as tf 
-import matplotlib
 import json
 from distutils.version import StrictVersion
-from matplotlib import pyplot as plt
 from PIL import Image
 import six
 # This is needed since the notebook is stored in the object_detection folder.
@@ -15,16 +13,17 @@ if StrictVersion(tf.__version__) < StrictVersion('1.12.0'):
   raise ImportError('Please upgrade your TensorFlow installation to v1.12.*.')
 
 from utils import label_map_util
-from utils import visualization_utils as vis_util
+# from utils import visualization_utils as vis_util
 
 
 
 MODEL_NAME = 'object_detection/ssd_mobilenet_v1_coco_2018_01_28/'
 PATH_TO_CKPT = MODEL_NAME + '/frozen_inference_graph.pb'
 PATH_TO_FROZEN_GRAPH = MODEL_NAME + '/frozen_inference_graph.pb'
-PATH_TO_LABELS = ('object_detection/data/mscoco_label_map.pbtxt')
+PATH_TO_LABELS = 'object_detection/data/mscoco_label_map.pbtxt'
 NUM_CLASSES = 90
-
+IMAGE_NAME = sys.argv[1]
+IMAGE_FILE_NAME = IMAGE_NAME.split(".")[0]
 
 detection_graph = tf.compat.v2.Graph()
 with detection_graph.as_default():
@@ -42,7 +41,7 @@ category_index = label_map_util.create_category_index(categories)
 
 def load_image_into_numpy_array(image):
   (im_width, im_height) = image.size
-  print((im_width, im_height))
+  # print((im_width, im_height))
   return np.array(image.getdata()).reshape(
       (im_height, im_width, 3)).astype(np.uint8)
 
@@ -95,7 +94,8 @@ def run_inference_for_single_image(image, graph):
 
 
 
-image_file = 'upload/target.png'
+image_file = 'upload/' + IMAGE_NAME
+print(image_file)
 
 image = Image.open(image_file)
 image = image.rotate(0, expand=True)
@@ -105,9 +105,11 @@ image_np = load_image_into_numpy_array(image)
 image_np_expanded = np.expand_dims(image_np, axis=0)
 output_dict = run_inference_for_single_image(image_np_expanded, detection_graph)
 max_boxes_to_draw = output_dict['detection_boxes'].shape[0]
+
 labels = []
 scores = []
 coordinates = []
+
 for i in range(min(max_boxes_to_draw, output_dict['detection_boxes'].shape[0])):
   if output_dict['detection_scores'] is None or output_dict['detection_scores'][i] > .5:
     display_str = ''
@@ -127,7 +129,9 @@ im_width, im_height = image.size
 
 
 import base64
+from io import BytesIO
 
+buffered = BytesIO()
 
 list_image = []
 for i in range(0,len(labels)):
@@ -139,9 +143,8 @@ for i in range(0,len(labels)):
     (left, right, top, bottom) = (xmin * im_width, xmax * im_width,
                                   ymin * im_height, ymax * im_height)
     img = temp.crop((left, top, right, bottom))
-    img.save("temp.jpg")
-    with open("temp.jpg","rb") as img_file:
-      my_string = base64.b64encode(img_file.read())
+    img.save(buffered, format="JPEG")
+    my_string = base64.b64encode(buffered.getvalue())
     image_base64 = my_string.decode("utf-8")
     list_image.append(image_base64)
 
@@ -154,5 +157,6 @@ for i in range(0,len(labels)):
   }
   retJson.append(obj)
 
-with open("result.txt",'w') as f: 
+
+with open("assets/"+ IMAGE_FILE_NAME + ".txt",'w') as f: 
   json.dump(retJson,f)
