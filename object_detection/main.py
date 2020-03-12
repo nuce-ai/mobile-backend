@@ -129,9 +129,6 @@ im_width, im_height = image.size
 
 
 import base64
-from io import BytesIO
-
-buffered = BytesIO()
 
 list_image = []
 for i in range(0,len(labels)):
@@ -143,8 +140,9 @@ for i in range(0,len(labels)):
     (left, right, top, bottom) = (xmin * im_width, xmax * im_width,
                                   ymin * im_height, ymax * im_height)
     img = temp.crop((left, top, right, bottom))
-    img.save(buffered, format="JPEG")
-    my_string = base64.b64encode(buffered.getvalue())
+    img.save("temp.png")
+    with open("temp.png",'rb') as image_crop:
+      my_string = base64.b64encode(image_crop.read())
     image_base64 = my_string.decode("utf-8")
     list_image.append(image_base64)
 
