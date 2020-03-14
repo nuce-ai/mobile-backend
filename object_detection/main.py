@@ -13,11 +13,9 @@ if StrictVersion(tf.__version__) < StrictVersion('1.12.0'):
   raise ImportError('Please upgrade your TensorFlow installation to v1.12.*.')
 
 from utils import label_map_util
-# from utils import visualization_utils as vis_util
 
 
-
-MODEL_NAME = 'object_detection/ssd_mobilenet_v1_coco_2018_01_28/'
+MODEL_NAME = 'object_detection/model/'
 PATH_TO_CKPT = MODEL_NAME + '/frozen_inference_graph.pb'
 PATH_TO_FROZEN_GRAPH = MODEL_NAME + '/frozen_inference_graph.pb'
 PATH_TO_LABELS = 'object_detection/data/mscoco_label_map.pbtxt'
