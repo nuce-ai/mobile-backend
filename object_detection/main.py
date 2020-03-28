@@ -96,9 +96,9 @@ image_file = 'upload/' + IMAGE_NAME
 print(image_file)
 
 image = Image.open(image_file)
-image = image.rotate(0, expand=True)
-
+# image = image.rotate(90)
 # image.show()
+# image.save(image_file)
 image_np = load_image_into_numpy_array(image)
 image_np_expanded = np.expand_dims(image_np, axis=0)
 output_dict = run_inference_for_single_image(image_np_expanded, detection_graph)
@@ -138,7 +138,9 @@ for i in range(0,len(labels)):
     (left, right, top, bottom) = (xmin * im_width, xmax * im_width,
                                   ymin * im_height, ymax * im_height)
     img = temp.crop((left, top, right, bottom))
-    img.save("temp.png")
+    img_t = img.rotate(270)
+    
+    img_t.save("temp.png")
     with open("temp.png",'rb') as image_crop:
       my_string = base64.b64encode(image_crop.read())
     image_base64 = my_string.decode("utf-8")

@@ -32,7 +32,7 @@ class UploadImageController(Resource):
               proc.wait()
               IMAGE_FILE_NAME = filename.split(".")[0]
               with open("assets/"+IMAGE_FILE_NAME+'.txt') as f:
-                     etJson = json.load(f)
+                     etJson = json.load(f)       
               return Response(json.dumps({"payload": etJson,"status":"200"}), mimetype="application/json", status=200)
        else:
               return Response(json.dumps({"message": "upload image failed","status":"400"}), mimetype="application/json", status=400)
