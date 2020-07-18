@@ -3,11 +3,16 @@ import sys
 from flask_restful import Api
 from api.routes import initialize_routes
 from flask_cors import CORS
-
+from config.configDB import initialize_db
 app = Flask(__name__)
 
+app.config['MONGODB_SETTINGS'] = {
+    'db' : 'alook',
+    'host': 'localhost',
+    'port': 27017
+    }
 cors = CORS(app)
-
+initialize_db(app)
 api  = Api(app)
 initialize_routes(api)
 
