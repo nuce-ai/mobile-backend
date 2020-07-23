@@ -28,8 +28,27 @@ class AddInformationController(Resource):
         return Response(
                 json.dumps(
                     {"status": 200, 
-                    "message" : "Upload information succeeded"
+                    "message" : "Create information succeeded"
                     
                     }),
                 mimetype="application/json",
                 status=200)
+    def put(self):
+        payload = request.get_json()
+        updateObject(payload)
+        return Response(
+            json.dumps({
+               "status" : 200,
+               "message" : "Update information succeeded"
+            })
+        )
+    
+    def delete(self):
+        payload = request.get_json()
+        deleteObject(payload)
+        return Response(
+            json.dumps({
+               "status" : 200,
+               "message" : "Delete information succeeded"
+            })
+        )

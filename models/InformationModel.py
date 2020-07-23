@@ -33,3 +33,8 @@ def getDetailObject(payload):
 # def updateEmployee(payload): 
 #     result = Employee.objects.get(employee_id = payload["id"]).update(**payload["data"])
 #     return result
+
+def updateObject(payload):
+    ObjectInfo.objects.get(object_name = payload['object_name']).update(**payload)
+def deleteObject(payload):
+    ObjectInfo.objects.get(object_name = payload['object_name']).delete()
