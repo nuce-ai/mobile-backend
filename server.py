@@ -8,8 +8,7 @@ app = Flask(__name__)
 
 app.config['MONGODB_SETTINGS'] = {
     'db' : 'alook',
-    'host': 'localhost',
-    'port': 27017
+    'host': 'mongodb+srv://alook:alook12345678@object-information.i7udl.mongodb.net/alook?retryWrites=true&w=majority'
     }
 cors = CORS(app)
 initialize_db(app)
